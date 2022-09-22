@@ -11,12 +11,12 @@
     "node": ">=16"
   },
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "rimraf build",
     "build": "yarn install && tsc --build --verbose",
     "docker": "docker run --name mongodb -p 27017:27017 mongo",
     "logs": "heroku logs -a x2-server-mongodb -t",
-    "serve": "node dist/index.js",
-    "start": "run-s clean compile serve"
+    "serve": "node build/index.js",
+    "start": "run-s clean build serve"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -26,14 +26,18 @@
     "graphql": "^16.6.0",
     "mongodb": "^4.10.0",
     "pst-extractor": "^1.9.0",
+    "stopword": "^2.0.4",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.19.1",
     "@babel/eslint-parser": "^7.19.1",
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.17.14",
     "@types/mongodb": "^4.0.7",
     "@types/node": "^18.7.18",
+    "@types/stopword": "^2.0.0",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@typescript-eslint/parser": "^5.38.0",
     "babel-jest": "^29.0.3",
