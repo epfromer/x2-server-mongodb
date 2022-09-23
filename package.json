@@ -14,7 +14,6 @@
     "clean": "rimraf build",
     "build": "yarn install && tsc --build --verbose",
     "docker": "docker run --name mongodb -p 27017:27017 mongo",
-    "logs": "heroku logs -a x2-server-mongodb -t",
     "serve": "node build/index.js",
     "start": "run-s clean build serve"
   },
