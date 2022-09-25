@@ -25,17 +25,13 @@ const processSend = (msg: string) => {
 }
 
 async function run() {
-  if (!process.env.MONGODB_HOST) {
-    throw 'MONGODB_HOST undefined'
-  }
-
   if (!getNumPSTs(process.argv[2])) {
     processSend(`no PSTs found in ${process.argv[2]}`)
     return
   }
 
   processSend(`connect to ${process.env.MONGODB_HOST}`)
-  const client = await mongodb.MongoClient.connect(process.env.MONGODB_HOST)
+  const client = await mongodb.MongoClient.connect(process.env.MONGODB_HOST!)
   const db = client.db(dbName)
 
   const insertEmails = async (email: Email[]): Promise<void> => {

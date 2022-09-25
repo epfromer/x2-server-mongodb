@@ -100,13 +100,9 @@ const createSortOrder = (httpQuery: HTTPQuery) => {
 }
 
 export async function getEmail(httpQuery: HTTPQuery): Promise<EmailTotal> {
-  if (!process.env.MONGODB_HOST) {
-    throw 'MONGODB_HOST undefined'
-  }
-
   try {
     const start = Date.now()
-    const client = await mongodb.MongoClient.connect(process.env.MONGODB_HOST)
+    const client = await mongodb.MongoClient.connect(process.env.MONGODB_HOST!)
     const db = client.db(dbName)
     const query = createSearchParams(httpQuery)
     const total = await db.collection(emailCollection).countDocuments(query)

@@ -6,6 +6,10 @@ import { graphqlHTTP } from 'express-graphql'
 import root from './root'
 dotenv.config()
 
+if (!process.env.MONGODB_HOST) {
+  throw 'MONGODB_HOST undefined'
+}
+
 const app = express()
 app.use(cors())
 app.use(
