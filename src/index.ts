@@ -1,9 +1,5 @@
-import { graphqlSchema } from './common'
-import cors from 'cors'
 import * as dotenv from 'dotenv'
-import express, { Application } from 'express'
-import { graphqlHTTP } from 'express-graphql'
-import root from './root'
+import express from 'express'
 dotenv.config()
 
 if (!process.env.MONGODB_HOST) {
@@ -11,7 +7,7 @@ if (!process.env.MONGODB_HOST) {
 }
 
 const app = express()
-app.use(cors())
+// app.use(cors())
 // app.use(
 //   '/graphql',
 //   graphqlHTTP({
