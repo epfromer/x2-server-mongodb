@@ -12,20 +12,20 @@ if (!process.env.MONGODB_HOST) {
 
 const app = express()
 app.use(cors())
-app.use(
-  '/graphql',
-  graphqlHTTP({
-    schema: graphqlSchema,
-    rootValue: root,
-    graphiql: true,
-    customFormatErrorFn: (error) => ({
-      message: error.message,
-      locations: error.locations,
-      stack: error.stack ? error.stack.split('\n') : [],
-      path: error.path,
-    }),
-  }) as Application
-)
+// app.use(
+//   '/graphql',
+//   graphqlHTTP({
+//     schema: graphqlSchema,
+//     rootValue: root,
+//     graphiql: true,
+//     customFormatErrorFn: (error) => ({
+//       message: error.message,
+//       locations: error.locations,
+//       stack: error.stack ? error.stack.split('\n') : [],
+//       path: error.path,
+//     }),
+//   }) as Application
+// )
 app.get('/', function (req, res) {
   res.send('Hello World')
 })
