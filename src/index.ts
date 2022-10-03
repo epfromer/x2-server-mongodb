@@ -26,6 +26,9 @@ app.use(
     }),
   }) as Application
 )
+app.get('/', function (req, res) {
+  res.send('Hello World')
+})
 
 const port = process.env.PORT || 3000
 app.listen(port, () => console.log(`mongodb running on PORT: ${port}`))

@@ -17,14 +17,22 @@ import { getImportStatus, importPST } from './importPST'
 import { clearSearchHistory, getSearchHistory } from './searchHistory'
 
 const getWordCloud = async (): Promise<Array<WordCloudTag>> => {
-  const client = await mongodb.MongoClient.connect(process.env.MONGODB_HOST!)
+  if (!process.env.MONGODB_HOST) {
+    throw 'MONGODB_HOST undefined'
+  }
+
+  const client = await mongodb.MongoClient.connect(process.env.MONGODB_HOST)
   const db = client.db(dbName)
   const wordCloud = await db.collection(wordCloudCollection).find().toArray()
   return wordCloud.map((word) => ({ tag: word.tag, weight: word.weight }))
 }
 
 const getEmailSentByDay = async (): Promise<Array<EmailSentByDay>> => {
-  const client = await mongodb.MongoClient.connect(process.env.MONGODB_HOST!)
+  if (!process.env.MONGODB_HOST) {
+    throw 'MONGODB_HOST undefined'
+  }
+
+  const client = await mongodb.MongoClient.connect(process.env.MONGODB_HOST)
   const db = client.db(dbName)
   const emailSentByDay = await db
     .collection(emailSentByDayCollection)
@@ -35,7 +43,11 @@ const getEmailSentByDay = async (): Promise<Array<EmailSentByDay>> => {
 }
 
 const getCustodians = async (): Promise<Array<Custodian>> => {
-  const client = await mongodb.MongoClient.connect(process.env.MONGODB_HOST!)
+  if (!process.env.MONGODB_HOST) {
+    throw 'MONGODB_HOST undefined'
+  }
+
+  const client = await mongodb.MongoClient.connect(process.env.MONGODB_HOST)
   const db = client.db(dbName)
   const custodians = await db.collection(custodianCollection).find().toArray()
   return custodians.map((custodian) => ({
@@ -53,7 +65,11 @@ const getCustodians = async (): Promise<Array<Custodian>> => {
 const setCustodianColor = async (
   httpQuery: HTTPQuery
 ): Promise<Array<Custodian>> => {
-  const client = await mongodb.MongoClient.connect(process.env.MONGODB_HOST!)
+  if (!process.env.MONGODB_HOST) {
+    throw 'MONGODB_HOST undefined'
+  }
+
+  const client = await mongodb.MongoClient.connect(process.env.MONGODB_HOST)
   const db = client.db(dbName)
   await db
     .collection(custodianCollection)
