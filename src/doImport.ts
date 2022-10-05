@@ -7,6 +7,7 @@ import {
   emailCollection,
   EmailSentByDay,
   emailSentByDayCollection,
+  getEnv,
   getNumPSTs,
   processCustodians,
   processEmailSentByDay,
@@ -31,7 +32,7 @@ async function run() {
   }
 
   processSend(`connect to ${process.env.MONGODB_HOST}`)
-  const client = await mongodb.MongoClient.connect(process.env.MONGODB_HOST!)
+  const client = await mongodb.MongoClient.connect(getEnv('MONGODB_HOST'))
   const db = client.db(dbName)
 
   const insertEmails = async (email: Email[]): Promise<void> => {

@@ -6,10 +6,6 @@ import { graphqlSchema } from './common'
 import root from './root'
 dotenv.config()
 
-if (!process.env.MONGODB_HOST) {
-  throw 'MONGODB_HOST undefined'
-}
-
 const app = express()
 app.use(cors())
 app.use(
@@ -27,9 +23,10 @@ app.use(
   }) as Application
 )
 app.get('/', function (req, res) {
-  res.send('Hello World')
+  res.send(
+    'x2-server-mongodb: GraphQL interface on email in MongoDB for X2 client'
+  )
 })
 
 const port = process.env.PORT || 3000
 app.listen(port, () => console.log(`mongodb running on PORT: ${port}`))
-
