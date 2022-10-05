@@ -31,7 +31,7 @@ async function run() {
     return
   }
 
-  processSend(`connect to ${process.env.MONGODB_HOST}`)
+  processSend(`connect to ${getEnv('MONGODB_HOST')}`)
   const client = await mongodb.MongoClient.connect(getEnv('MONGODB_HOST'))
   const db = client.db(dbName)
 
