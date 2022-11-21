@@ -11,6 +11,7 @@
     "node": ">=16"
   },
   "scripts": {
+    "yarn": "yarn",
     "docker": "docker run --name mongodb -p 27017:27017 mongo",
     "build": "yarn install && tsc --build --verbose",
     "start": "node build/index.js",
