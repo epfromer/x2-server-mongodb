@@ -28,5 +28,5 @@ app.get('/', function (req, res) {
   )
 })
 
-const port = process.env.PORT || 3000
-app.listen(port, () => console.log(`mongodb running on PORT: ${port}`))
+const port = process.env.PORT || 80
+app.listen(port, () => console.log(`mongodb on port ${port}`))
